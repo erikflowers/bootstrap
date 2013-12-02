@@ -19,8 +19,8 @@
 .clearfix() {
   &:before,
   &:after {
-    content: " "; /* 1 */
-    display: table; /* 2 */
+    content: " "; // 1
+    display: table; // 2
   }
   &:after {
     clear: both;
@@ -88,11 +88,7 @@
 }
 // New mixin to use as of v3.0.1
 .text-hide() {
-  font: ~"0/0" a;
-  color: transparent;
-  text-shadow: none;
-  background-color: transparent;
-  border: 0;
+  .hide-text();
 }
 
 
@@ -489,6 +485,11 @@
           border-color: @border;
     }
   }
+
+  .badge {
+    color: @background;
+    background-color: #fff;
+  }
 }
 
 // Button sizes
@@ -736,11 +737,11 @@
     @item: ~".col-@{class}-@{index}";
     .col(@index + 1, @item);
   }
-  .col(@index, @list) when (@index < @grid-columns) { // general
+  .col(@index, @list) when (@index =< @grid-columns) { // general
     @item: ~".col-@{class}-@{index}";
     .col(@index + 1, ~"@{list}, @{item}");
   }
-  .col(@index, @list) when (@index = @grid-columns) { // terminal
+  .col(@index, @list) when (@index > @grid-columns) { // terminal
     @{list} {
       float: left;
     }
