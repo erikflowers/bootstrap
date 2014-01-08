@@ -20,7 +20,7 @@ module.exports = function (grunt) {
     pkg: grunt.file.readJSON('package.json'),
     banner: '/*!\n' +
               ' * Bootstrap v<%= pkg.version %> (<%= pkg.homepage %>)\n' +
-              ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+              ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
               ' * Licensed under <%= _.pluck(pkg.licenses, "type") %> (<%= _.pluck(pkg.licenses, "url") %>)\n' +
               ' */\n',
     jqueryCheck: 'if (typeof jQuery === "undefined") { throw new Error("Bootstrap requires jQuery") }\n\n',
@@ -60,6 +60,9 @@ module.exports = function (grunt) {
       },
       test: {
         src: ['js/tests/unit/*.js']
+      },
+      assets: {
+        src: ['docs/assets/js/application.js', 'docs/assets/js/customizer.js']
       }
     },
 
@@ -111,7 +114,7 @@ module.exports = function (grunt) {
         options: {
           banner: '/*!\n' +
           ' * Bootstrap Docs (<%= pkg.homepage %>)\n' +
-          ' * Copyright <%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
+          ' * Copyright 2011-<%= grunt.template.today("yyyy") %> <%= pkg.author %>\n' +
           ' * Licensed under the Creative Commons Attribution 3.0 Unported License. For\n' +
           ' * details, see http://creativecommons.org/licenses/by/3.0/.\n' +
           ' */\n',
@@ -124,7 +127,7 @@ module.exports = function (grunt) {
           'docs/assets/js/filesaver.js',
           'docs/assets/js/customizer.js'
         ],
-        dest: 'docs/assets/js/customize.js'
+        dest: 'docs/assets/js/customize.min.js'
       }
     },
 
@@ -189,7 +192,7 @@ module.exports = function (grunt) {
         },
         files: {
           'dist/css/<%= pkg.name %>.css': ['dist/css/<%= pkg.name %>.css'],
-          'dist/css/<%= pkg.name %>-theme.css': ['dist/css/<%= pkg.name %>-theme.css'],
+          'dist/css/<%= pkg.name %>-theme.css': ['dist/css/<%= pkg.name %>-theme.css']
         }
       }
     },
@@ -205,7 +208,7 @@ module.exports = function (grunt) {
         cwd: './dist',
         src: [
           '{css,js}/*.min.*',
-          '{css}/*.map',
+          'css/*.map',
           'fonts/*'
         ],
         dest: 'docs/dist'
@@ -297,7 +300,7 @@ module.exports = function (grunt) {
   var testSubtasks = [];
   // Skip core tests if running a different subset of the test suite
   if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'core') {
-    testSubtasks = testSubtasks.concat(['dist-css', 'jshint', 'jscs', 'qunit']);
+    testSubtasks = testSubtasks.concat(['dist-css', 'csslint', 'jshint', 'jscs', 'qunit']);
   }
   // Skip HTML validation if running a different subset of the test suite
   if (!process.env.TWBS_TEST || process.env.TWBS_TEST === 'validate-html') {

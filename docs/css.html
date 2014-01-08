@@ -1312,6 +1312,12 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
           </tr>
           <tr>
             <td>
+              <code>.info</code>
+            </td>
+            <td>Indicates a neutral informative change or action</td>
+          </tr>
+          <tr>
+            <td>
               <code>.warning</code>
             </td>
             <td>Indicates a warning that might need attention</td>
@@ -1321,12 +1327,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
               <code>.danger</code>
             </td>
             <td>Indicates a dangerous or potentially negative action</td>
-          </tr>
-          <tr>
-            <td>
-              <code>.info</code>
-            </td>
-            <td>Indicates a neutral informative change or action</td>
           </tr>
         </tbody>
       </table>
@@ -1366,7 +1366,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <td>Column content</td>
             <td>Column content</td>
           </tr>
-          <tr class="warning">
+          <tr class="info">
             <td>5</td>
             <td>Column content</td>
             <td>Column content</td>
@@ -1378,7 +1378,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <td>Column content</td>
             <td>Column content</td>
           </tr>
-          <tr class="danger">
+          <tr class="warning">
             <td>7</td>
             <td>Column content</td>
             <td>Column content</td>
@@ -1390,7 +1390,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
             <td>Column content</td>
             <td>Column content</td>
           </tr>
-          <tr class="info">
+          <tr class="danger">
             <td>9</td>
             <td>Column content</td>
             <td>Column content</td>
@@ -2414,7 +2414,6 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <p class="bg-danger">Donec ullamcorper nulla non metus auctor fringilla.</p>
     </div>
 {% highlight html %}
-<p class="bg-muted">...</p>
 <p class="bg-primary">...</p>
 <p class="bg-success">...</p>
 <p class="bg-info">...</p>
@@ -2552,7 +2551,7 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
 
 
     <h3 id="helper-classes-screen-readers">Screen reader content</h3>
-    <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Necessary for following <a href="{{ site.baseurl }}getting-started#accessibility">accessibility best practices</a>. Can also be used as a mixin.</p>
+    <p>Hide an element to all devices <strong>except screen readers</strong> with <code>.sr-only</code>. Necessary for following <a href="../getting-started/#accessibility">accessibility best practices</a>. Can also be used as a mixin.</p>
 {% highlight html %}
 <a class="sr-only" href="#content">Skip to main content</a>
 {% endhighlight %}
@@ -2820,11 +2819,11 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
     </div>
     <p class="lead">Bootstrap's CSS is built on Less, a preprocessor with additional functionality like variables, mixins, and functions for compiling CSS. Those looking to use the source Less files instead of our compiled CSS files can make use of the numerous variables and mixins we use throughout the framework.</p>
 
-    <p>Grid variables and mixins are covered <a href="{{ site.baseurl }}css/#grid-less">within the Grid system section</a>.</p>
+    <p>Grid variables and mixins are covered <a href="#grid-less">within the Grid system section</a>.</p>
 
 
     <h2 id="less-variables">Variables</h2>
-    <p>Variables are used throughout the entire project as a way to centralize and share commonly used values like colors, spacing, or font stacks. For a complete breakdown, please see <a href="{{ site.baseurl }}customize/#less-variables-section">the Customizer</a>.</p>
+    <p>Variables are used throughout the entire project as a way to centralize and share commonly used values like colors, spacing, or font stacks. For a complete breakdown, please see <a href="../customize/#less-variables-section">the Customizer</a>.</p>
 
     <h3 id="less-variables-colors">Colors</h3>
     <p>Easily make use of two color schemes: grayscale and semantic. Grayscale colors provide quick access to commonly used shades of black while semantic include various colors assigned to meaningful contextual values.</p>
@@ -2849,17 +2848,17 @@ For example, <code>&lt;section&gt;</code> should be wrapped as inline.
       <div class="color-swatches">
         <div class="color-swatch brand-primary"></div>
         <div class="color-swatch brand-success"></div>
+        <div class="color-swatch brand-info"></div>
         <div class="color-swatch brand-warning"></div>
         <div class="color-swatch brand-danger"></div>
-        <div class="color-swatch brand-info"></div>
       </div>
     </div>
 {% highlight css %}
 @brand-primary: #428bca;
 @brand-success: #5cb85c;
+@brand-info:    #5bc0de;
 @brand-warning: #f0ad4e;
 @brand-danger:  #d9534f;
-@brand-info:    #5bc0de;
 {% endhighlight %}
 
     <p>Use any of these color variables as they are or reassign them to more meaningful variables for your project.</p>
@@ -2984,7 +2983,7 @@ a {
 {% endhighlight %}
 
     <h3 id="less-mixins-rounded-corners">Rounded corners</h3>
-    <p>Today all modern browsers support the non-prefixed <code>border-radius</code> property. As such, there is no <code>.border-radius()</code> mixin, but Preboot does include shortcuts for quickly rounding two corners on a particular side of an object.</p>
+    <p>Today all modern browsers support the non-prefixed <code>border-radius</code> property. As such, there is no <code>.border-radius()</code> mixin, but Bootstrap does include shortcuts for quickly rounding two corners on a particular side of an object.</p>
 {% highlight css %}
 .border-top-radius(@radius) {
   border-top-right-radius: @radius;
@@ -3279,7 +3278,7 @@ a {
 {% endhighlight %}
 
     <h3 id="less-mixins-retina-images">Retina images</h3>
-    <p>Specify two image paths and the @1x image dimensions, and Preboot will provide an @2x media query. <strong>If you have many images to serve, consider writing your retina image CSS manually in a single media query.</strong></p>
+    <p>Specify two image paths and the @1x image dimensions, and Bootstrap will provide an @2x media query. <strong>If you have many images to serve, consider writing your retina image CSS manually in a single media query.</strong></p>
 {% highlight css %}
 .img-retina(@file-1x; @file-2x; @width-1x; @height-1x) {
   background-image: url("@{file-1x}");
@@ -3462,7 +3461,7 @@ Bootstrap.javascripts_path
 @import "bootstrap/theme";
 {% endhighlight %}
 
-    <p>The full list of Bootstrap variables can be found <a href="{{ page.url }}customize/#less-variables">in the Customizer</a>. You can override these by simply redefining the variable before the <code>@import</code> directive, e.g.:</p>
+    <p>The full list of Bootstrap variables can be found <a href="../customize/#less-variables">in the Customizer</a>. You can override these by simply redefining the variable before the <code>@import</code> directive, e.g.:</p>
 
 {% highlight sass %}
 $navbar-default-bg: #312312;
